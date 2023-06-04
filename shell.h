@@ -37,118 +37,118 @@
 
 extern char **environ;
 
-/* toem_shloop.c */
+/* shell_executor.c */
 int shell_hsh(p_info *, char **);
 int findBuiltin(p_info *);
 void find_shellCMD(p_info *);
 void fork_shellCMD(p_info *);
 
-/* toem_parser.c */
+/* path_search.c */
 int is_shellCMD(p_info *, char *);
 char *dup_shellChars(char *, int, int);
 char *find_shellPath(p_info *, char *, char *);
 
-/* toem_errors.c */
+/* error_output.c */
 void shell_Eputs(char *);
 int shell_Eputchar(char);
 int shell_putFD(char c, int fd);
 int shell_putsFD(char *str, int fd);
 
-/* toem_string.c */
+/* string_utils.c */
 int shell_strlen(char *);
 int shell_strcmp(char *, char *);
 char *startsWith(const char *, const char *);
 char *shell_strcat(char *, char *);
 
-/* toem_string1.c */
+/* string_utils_1.c */
 char *shell_strcpy(char *, char *);
 char *shell_strdup(const char *);
 void shell_puts(char *);
 int shell_putchar(char);
 
-/* toem_exits.c */
+/* string_functions.c */
 char *shell_strncpy(char *, char *, int);
 char *shell_strncat(char *, char *, int);
 char *shell_strchr(char *, char);
 
-/* toem_tokenizer.c */
+/* string_split.c */
 char **splits_strToWrd(char *, char *);
 char **splits_str(char *, char);
 
-/* toem_realloc.c */
+/* my_functions.c */
 char *shell__memset(char *, char, unsigned int);
 void s_free(char **);
 void *shell_realloc(void *, unsigned int, unsigned int);
 
-/* toem_memory.c */
+/* memory_utils.c */
 int p_free(void **);
 
-/* toem_atoi.c */
+/* utility.c */
 int interact(p_info *);
 int isDelim(char, char *);
 int shell_isAlpha(int);
 int shell_atoi(char *);
 
-/* toem_errors1.c */
+/* error_utils.c */
 int shell_errAtoi(char *);
 void shellPrint_error(p_info *, char *);
 int shellPrint_decimal(int, int);
 char *convertNumber(long int, int, int);
 void shell_remove(char *);
 
-/* toem_builtin.c */
+/* shell_commands.c */
 int shell_exit(p_info *);
 int shell_cd(p_info *);
 int shell_help(p_info *);
 
-/* toem_builtin1.c */
+/* alias_history.c */
 int shell_history(p_info *);
 int shell_alias(p_info *);
 
-/*toem_getline.c */
+/* input_functions.c */
 ssize_t shellGet_input(p_info *);
 int shellGet_line(p_info *, char **, size_t *);
 void shell_handler(int);
 
-/* toem_getinfo.c */
+/* info.c */
 void shellClear_info(p_info *);
 void shellSet_info(p_info *, char **);
 void shellFree_info(p_info *, int);
 
-/* toem_environ.c */
+/* shell_functions.c */
 char *shellGet_eviron(p_info *, const char *);
 int shellEviron(p_info *);
 int shellSetEvison(p_info *);
 int shellUnsetEnviron(p_info *);
 int shellPopulateEnvList(p_info *);
 
-/* toem_getenv.c */
+/* env_operations.c */
 char **getEnviron(p_info *);
 int unsetEnv(p_info *, char *);
 int setEnv(p_info *, char *, char *);
 
-/* toem_history.c */
+/* history_utils.c */
 char *getHistoryFile(p_info *info);
 int writeHistory(p_info *info);
 int readHistory(p_info *info);
 int buildHistoryList(p_info *info, char *buf, int linecount);
 int renumberHistory(p_info *info);
 
-/* toem_lists.c */
+/* list_functions.c */
 listS *hellAddNode(listS **, const char *, int);
 listS *shellAddNodeEnd(listS **, const char *, int);
 size_t shellPrintListStr(const listS *);
 int shellDelNodeAtIndex(listS **, unsigned int);
 void shellFreeList(listS **);
 
-/* toem_lists1.c */
+/* list_operations.c */
 size_t shellListLen(const listS *);
 char **shellListToStrings(listS *);
 size_t shell_printList(const listS *);
 listS *stringStartsWithPrefix(listS *, char *, char);
 ssize_t getNodeIndex(listS *, listS *);
 
-/* toem_vars.c */
+/* command_utils.c */
 int shell_isChain(p_info *, char *, size_t *);
 void checkChain(p_info *, char *, size_t *, size_t, size_t);
 int replaceAlias(p_info *);
