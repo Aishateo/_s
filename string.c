@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _strlen - length of a string
+ * shell_strlen - length of a string
  * @s: string
  *
  * Return: integer
  */
-int _strlen(char *s)
+int shell_strlen(char *s)
 {
 	int i = 0;
 
@@ -19,13 +19,13 @@ int _strlen(char *s)
 }
 
 /**
- * _strcmp - comparison
+ * shell_strcmp - comparison
  * @s1: first
  * @s2: second
  *
  * Return: negative, positive, zero
  */
-int _strcmp(char *s1, char *s2)
+int shell_strcmp(char *s1, char *s2)
 {
 	while (*s1 && *s2)
 	{
@@ -41,13 +41,13 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- * _strcat - two strings
+ * shell_strcat - two strings
  * @dest: destination buffer
  * @src: source buffer
  *
  * Return: pointer
  */
-char *_strcat(char *dest, char *src)
+char *shell_strcat(char *dest, char *src)
 {
 	char *ret = dest;
 
@@ -60,13 +60,13 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * starts_with - starts with haystack
+ * startsWith - starts with haystack
  * @haystack: string
  * @needle: substring
  *
  * Return: address of next char of haystack or NULL
  */
-char *starts_with(const char *haystack, const char *needle)
+char *startsWith(const char *haystack, const char *needle)
 {
 	while (*needle)
 		if (*needle++ != *haystack++)

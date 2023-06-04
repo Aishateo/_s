@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * add_node_end - adds a node to end
+ * shellAddNodeEnd - adds a node to end
  * @head: address
  * @str: str
  * @num: node index
  *
  * Return: size of list
  */
-list_t *add_node_end(list_t **head, const char *str, int num)
+list_t *shellAddNodeEnd(list_t **head, const char *str, int num)
 {
 	list_t *new_nde, *nde;
 
@@ -19,11 +19,11 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	new_nde = malloc(sizeof(list_t));
 	if (!new_nde)
 		return (NULL);
-	_memset((void *)new_nde, 0, sizeof(list_t));
+	shell__memset((void *)new_nde, 0, sizeof(list_t));
 	new_nde->num = num;
 	if (str)
 	{
-		new_nde->str = _strdup(str);
+		new_nde->str = shell_strdup(str);
 		if (!new_nde->str)
 		{
 			free(new_nde);
@@ -42,12 +42,12 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 }
 
 /**
- * free_list - frees list
+ * shellFreeList - frees list
  * @head_ptr: address
  *
  * Return: void
  */
-void free_list(list_t **head_ptr)
+void shellFreeList(list_t **head_ptr)
 {
 	list_t *nde, *next_nde, *head;
 
@@ -66,19 +66,19 @@ void free_list(list_t **head_ptr)
 }
 
 /**
- * print_list_str - prints str element
+ * shellPrintListStr - prints str element
  * @h: pointer
  *
  * Return: size
  */
-size_t print_list_str(const list_t *h)
+size_t shellPrintListStr(const list_t *h)
 {
 	size_t it = 0;
 
 	while (h)
 	{
-		_puts(h->str ? h->str : "(nil)");
-		_puts("\n");
+		shell_puts(h->str ? h->str : "(nil)");
+		shell_puts("\n");
 		h = h->next;
 		it++;
 	}
@@ -86,13 +86,13 @@ size_t print_list_str(const list_t *h)
 }
 
 /**
- * delete_node_at_index - deletes node
+ * shellDelNodeAtIndex - deletes node
  * @head: address
  * @index: index of node
  *
  * Return: success or failure
  */
-int delete_node_at_index(list_t **head, unsigned int index)
+int shellDelNodeAtIndex(list_t **head, unsigned int index)
 {
 	list_t *nde, *prev_nde;
 	unsigned int i = 0;
@@ -126,14 +126,14 @@ int delete_node_at_index(list_t **head, unsigned int index)
 }
 
 /**
- * add_node - adds a node
+ * hellAddNode - adds a node
  * @head: address
  * @str: str field
  * @num: node index
  *
  * Return: size
  */
-list_t *add_node(list_t **head, const char *str, int num)
+list_t *hellAddNode(list_t **head, const char *str, int num)
 {
 	list_t *new_hd;
 
@@ -142,11 +142,11 @@ list_t *add_node(list_t **head, const char *str, int num)
 	new_hd= malloc(sizeof(list_t));
 	if (!new_hd)
 		return (NULL);
-	_memset((void *)new_hd, 0, sizeof(list_t));
+	shell__memset((void *)new_hd, 0, sizeof(list_t));
 	new_hd->num = num;
 	if (str)
 	{
-		new_hd->str = _strdup(str);
+		new_hd->str = shell_strdup(str);
 		if (!new_hd->str)
 		{
 			free(new_hd);

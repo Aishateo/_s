@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- **_strncat - concate strings
+ **shell_strncat - concate strings
  *@dest: 1st string
  *@src: 2d string
  *@n: amount of bytes
  *Return: string
  */
-char *_strncat(char *dest, char *src, int n)
+char *shell_strncat(char *dest, char *src, int n)
 {
 	int i, j;
 	char *st = dest;
@@ -28,13 +28,13 @@ char *_strncat(char *dest, char *src, int n)
 }
 
 /**
- **_strncpy - string cp
+ **shell_strncpy - string cp
  *@dest: destination
  *@src: source
  *@n: amount
  *Return: string
  */
-char *_strncpy(char *dest, char *src, int n)
+char *shell_strncpy(char *dest, char *src, int n)
 {
 	int i, j;
 	char *st = dest;
@@ -58,12 +58,12 @@ char *_strncpy(char *dest, char *src, int n)
 }
 
 /**
- **_strchr - locates a character
+ **shell_strchr - locates a character
  *@s: string
  *@c: character
  *Return: pointer to the memory
  */
-char *_strchr(char *s, char c)
+char *shell_strchr(char *s, char c)
 {
 	do {
 		if (*s == c)

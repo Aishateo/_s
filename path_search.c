@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * is_cmd - determines if a file is an executable command
+ * is_shellCMD - determines if a file is an executable command
  * @info: the info struct
  * @path: path to the file
  *
  * Return: 1 if true, 0 otherwise
  */
-int is_cmd(info_t *info, char *path)
+int is_shellCMD(info_t *info, char *path)
 {
 	struct stat st;
 
@@ -23,14 +23,14 @@ int is_cmd(info_t *info, char *path)
 }
 
 /**
- * dup_chars - duplicates characters
+ * dup_shellChars - duplicates characters
  * @pathstr: the PATH string
  * @start: starting index
  * @stop: stopping index
  *
  * Return: pointer to new buffer
  */
-char *dup_chars(char *pathstr, int start, int stop)
+char *dup_shellChars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
 	int i = 0, k = 0;
@@ -43,38 +43,38 @@ char *dup_chars(char *pathstr, int start, int stop)
 }
 
 /**
- * find_path - finds this cmd in the PATH string
+ * find_shellPath - finds this cmd in the PATH string
  * @info: the info struct
  * @pathstr: the PATH string
  * @cmd: the cmd to find
  *
  * Return: full path of cmd if found or NULL
  */
-char *find_path(info_t *info, char *pathstr, char *cmd)
+char *find_shellPath(info_t *info, char *pathstr, char *cmd)
 {
 	int i = 0, curr_pos = 0;
 	char *path;
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
+	if ((shell_strlen(cmd) > 2) && startsWith(cmd, "./"))
 	{
-		if (is_cmd(info, cmd))
+		if (is_shellCMD(info, cmd))
 			return (cmd);
 	}
 	while (1)
 	{
 		if (!pathstr[i] || pathstr[i] == ':')
 		{
-			path = dup_chars(pathstr, curr_pos, i);
+			path = dup_shellChars(pathstr, curr_pos, i);
 			if (!*path)
-				_strcat(path, cmd);
+				shell_strcat(path, cmd);
 			else
 			{
-				_strcat(path, "/");
-				_strcat(path, cmd);
+				shell_strcat(path, "/");
+				shell_strcat(path, cmd);
 			}
-			if (is_cmd(info, path))
+			if (is_shellCMD(info, path))
 				return (path);
 			if (!pathstr[i])
 				break;

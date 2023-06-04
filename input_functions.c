@@ -15,14 +15,14 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 
 	if (!*len) /* if nothing left in the buffer, fill it */
 	{
-		/*bfree((void **)info->cmd_buf);*/
+		/*p_free((void **)info->cmd_buf);*/
 		free(*buf);
 		*buf = NULL;
-		signal(SIGINT, sigintHandler);
+		signal(SIGINT, shell_handler);
 #if USE_GETLINE
 		r = getline(buf, &len_p, stdin);
 #else
-		r = _getline(info, buf, &len_p);
+		r = shellGet_line(info, buf, &len_p);
 #endif
 		if (r > 0)
 		{
@@ -32,9 +32,9 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 				r--;
 			}
 			info->linecount_flag = 1;
-			remove_comments(*buf);
-			build_history_list(info, *buf, info->histcount++);
-			/* if (_strchr(*buf, ';')) is this a command chain? */
+			shell_remove(*buf);
+			buildHistoryList(info, *buf, info->histcount++);
+			/* if (shell_strchr(*buf, ';')) is this a command chain? */
 			{
 				*len = r;
 				info->cmd_buf = buf;
@@ -45,19 +45,19 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 }
 
 /**
- * get_input - gets a line minus the newline
+ * shellGet_input - gets a line minus the newline
  * @info: parameter struct
  *
  * Return: bytes read
  */
-ssize_t get_input(info_t *info)
+ssize_t shellGet_input(info_t *info)
 {
 	static char *buf; /* the ';' command chain buffer */
 	static size_t i, j, len;
 	ssize_t r = 0;
 	char **buf_p = &(info->arg), *p;
 
-	_putchar(BUF_FLUSH);
+	shell_putchar(BUF_FLUSH);
 	r = input_buf(info, &buf, &len);
 	if (r == -1) /* EOF */
 		return (-1);
@@ -66,10 +66,10 @@ ssize_t get_input(info_t *info)
 		j = i; /* init new iterator to current buf position */
 		p = buf + i; /* get pointer for return */
 
-		check_chain(info, buf, &j, i, len);
+		checkChain(info, buf, &j, i, len);
 		while (j < len) /* iterate to semicolon or end */
 		{
-			if (is_chain(info, buf, &j))
+			if (shell_isChain(info, buf, &j))
 				break;
 			j++;
 		}
@@ -82,11 +82,11 @@ ssize_t get_input(info_t *info)
 		}
 
 		*buf_p = p; /* pass back pointer to current command position */
-		return (_strlen(p)); /* return length of current command */
+		return (shell_strlen(p)); /* return length of current command */
 	}
 
-	*buf_p = buf; /* else not a chain, pass back buffer from _getline() */
-	return (r); /* return length of buffer from _getline() */
+	*buf_p = buf; /* else not a chain, pass back buffer from shellGet_line() */
+	return (r); /* return length of buffer from shellGet_line() */
 }
 
 /**
@@ -110,14 +110,14 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
 }
 
 /**
- * _getline - gets the next line of input from STDIN
+ * shellGet_line - gets the next line of input from STDIN
  * @info: parameter struct
  * @ptr: address of pointer to buffer, preallocated or NULL
  * @length: size of preallocated ptr buffer if not NULL
  *
  * Return: s
  */
-int _getline(info_t *info, char **ptr, size_t *length)
+int shellGet_line(info_t *info, char **ptr, size_t *length)
 {
 	static char buf[READ_BUF_SIZE];
 	static size_t i, len;
@@ -135,16 +135,16 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 
-	c = _strchr(buf + i, '\n');
+	c = shell_strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
-	new_p = _realloc(p, s, s ? s + k : k + 1);
+	new_p = shell_realloc(p, s, s ? s + k : k + 1);
 	if (!new_p) /* MALLOC FAILURE! */
 		return (p ? free(p), -1 : -1);
 
 	if (s)
-		_strncat(new_p, buf + i, k - i);
+		shell_strncat(new_p, buf + i, k - i);
 	else
-		_strncpy(new_p, buf + i, k - i + 1);
+		shell_strncpy(new_p, buf + i, k - i + 1);
 
 	s += k - i;
 	i = k;
@@ -157,15 +157,15 @@ int _getline(info_t *info, char **ptr, size_t *length)
 }
 
 /**
- * sigintHandler - blocks ctrl-C
+ * shell_handler - blocks ctrl-C
  * @sig_num: the signal number
  *
  * Return: void
  */
-void sigintHandler(__attribute__((unused))int sig_num)
+void shell_handler(__attribute__((unused))int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	shell_puts("\n");
+	shell_puts("$ ");
+	shell_putchar(BUF_FLUSH);
 }
 

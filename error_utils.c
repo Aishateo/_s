@@ -2,12 +2,12 @@
 
 
 /**
- * remove_comments - function replaces first
+ * shell_remove - function replaces first
  * @buf: address of the string
  *
  * Return: Always 0;
  */
-void remove_comments(char *buf)
+void shell_remove(char *buf)
 {
 	int i;
 
@@ -20,11 +20,11 @@ void remove_comments(char *buf)
 }
 
 /**
- * _erratoi - converts a string to an int
+ * shell_errAtoi - converts a string to an int
  * @s: the string
  * Return: 0 if no numbers in string
  */
-int _erratoi(char *s)
+int shell_errAtoi(char *s)
 {
 	int i = 0;
 	unsigned long int result = 0;
@@ -48,36 +48,36 @@ int _erratoi(char *s)
 }
 
 /**
- * print_error - prints an
+ * shellPrint_error - prints an
  * @info: t
  * @estr: string containing
  * Return: 0 if no numbers in string
  */
-void print_error(info_t *info, char *estr)
+void shellPrint_error(info_t *info, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	shell_Eputs(info->fname);
+	shell_Eputs(": ");
+	shellPrint_decimal(info->line_count, STDERR_FILENO);
+	shell_Eputs(": ");
+	shell_Eputs(info->argv[0]);
+	shell_Eputs(": ");
+	shell_Eputs(estr);
 }
 
 /**
- * print_d - function prints a decimal
+ * shellPrint_decimal - function prints a decimal
  * @input: the input
  * @fd: the filedescriptor
  * Return: number of characters printed
  */
-int print_d(int input, int fd)
+int shellPrint_decimal(int input, int fd)
 {
-	int (*__putchar)(char) = _putchar;
+	int (*__putchar)(char) = shell_putchar;
 	int i, c = 0;
 	unsigned int _abs_, curr;
 
 	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
+		__putchar = shell_Eputchar;
 	if (input < 0)
 	{
 		_abs_ = -input;
@@ -103,14 +103,14 @@ int print_d(int input, int fd)
 }
 
 /**
- * convert_number - converter function, a clone of itoa
+ * convertNumber - converter function, a clone of itoa
  * @num: my number
  * @base: my  base
  * @flags: flags
  *
  * Return: string
  */
-char *convert_number(long int num, int base, int flags)
+char *convertNumber(long int num, int base, int flags)
 {
 	static char *array;
 	static char buffer[50];
