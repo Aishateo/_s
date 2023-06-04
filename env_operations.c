@@ -6,12 +6,12 @@
  *          constant function prototype.
  * Return: Always 0
  */
-char **getEnviron(info_t *info)
+char **getEnviron(p_info *info)
 {
-	if (!info->environ || info->env_changed)
+	if (!info->environ || info->envChanged)
 	{
 		info->environ = shellListToStrings(info->env);
-		info->env_changed = 0;
+		info->envChanged = 0;
 	}
 
 	return (info->environ);
@@ -24,9 +24,9 @@ char **getEnviron(info_t *info)
  *  Return: 1 on delete, 0 otherwise
  * @var: the string env var property
  */
-int unsetEnv(info_t *info, char *var)
+int unsetEnv(p_info *info, char *var)
 {
-	list_t *node = info->env;
+	listS *node = info->env;
 	size_t i = 0;
 	char *p;
 
@@ -38,7 +38,7 @@ int unsetEnv(info_t *info, char *var)
 		p = startsWith(node->str, var);
 		if (p && *p == '=')
 		{
-			info->env_changed = shellDelNodeAtIndex(&(info->env), i);
+			info->envChanged = shellDelNodeAtIndex(&(info->env), i);
 			i = 0;
 			node = info->env;
 			continue;
@@ -46,7 +46,7 @@ int unsetEnv(info_t *info, char *var)
 		node = node->next;
 		i++;
 	}
-	return (info->env_changed);
+	return (info->envChanged);
 }
 
 /**
@@ -58,10 +58,10 @@ int unsetEnv(info_t *info, char *var)
  * @value: the string env var value
  *  Return: Always 0
  */
-int setEnv(info_t *info, char *var, char *value)
+int setEnv(p_info *info, char *var, char *value)
 {
 	char *buf = NULL;
-	list_t *node;
+	listS *node;
 	char *p;
 
 	if (!var || !value)
@@ -81,14 +81,14 @@ int setEnv(info_t *info, char *var, char *value)
 		{
 			free(node->str);
 			node->str = buf;
-			info->env_changed = 1;
+			info->envChanged = 1;
 			return (0);
 		}
 		node = node->next;
 	}
 	shellAddNodeEnd(&(info->env), buf, 0);
 	free(buf);
-	info->env_changed = 1;
+	info->envChanged = 1;
 	return (0);
 }
 

@@ -5,7 +5,7 @@
  * @info: Structure containing potential arguments.
  * Return: Always 0
  */
-int shell_help(info_t *info)
+int shell_help(p_info *info)
 {
 	char **arg_array;
 
@@ -21,7 +21,7 @@ int shell_help(info_t *info)
  * @info: Structure containing
  * Return: exits with
  */
-int shell_exit(info_t *info)
+int shell_exit(p_info *info)
 {
 	int exitcheck;
 
@@ -48,7 +48,7 @@ int shell_exit(info_t *info)
  * @info: Structure for info
  * Return: Always 0
  */
-int shell_cd(info_t *info)
+int shell_cd(p_info *info)
 {
 	char *str, *dir, buffer[1024];
 	int chdir_ret;

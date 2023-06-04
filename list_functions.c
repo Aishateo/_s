@@ -8,18 +8,18 @@
  *
  * Return: size of list
  */
-list_t *shellAddNodeEnd(list_t **head, const char *str, int num)
+listS *shellAddNodeEnd(listS **head, const char *str, int num)
 {
-	list_t *new_nde, *nde;
+	listS *new_nde, *nde;
 
 	if (!head)
 		return (NULL);
 
 	nde = *head;
-	new_nde = malloc(sizeof(list_t));
+	new_nde = malloc(sizeof(listS));
 	if (!new_nde)
 		return (NULL);
-	shell__memset((void *)new_nde, 0, sizeof(list_t));
+	shell__memset((void *)new_nde, 0, sizeof(listS));
 	new_nde->num = num;
 	if (str)
 	{
@@ -47,9 +47,9 @@ list_t *shellAddNodeEnd(list_t **head, const char *str, int num)
  *
  * Return: void
  */
-void shellFreeList(list_t **head_ptr)
+void shellFreeList(listS **head_ptr)
 {
-	list_t *nde, *next_nde, *head;
+	listS *nde, *next_nde, *head;
 
 	if (!head_ptr || !*head_ptr)
 		return;
@@ -71,7 +71,7 @@ void shellFreeList(list_t **head_ptr)
  *
  * Return: size
  */
-size_t shellPrintListStr(const list_t *h)
+size_t shellPrintListStr(const listS *h)
 {
 	size_t it = 0;
 
@@ -92,9 +92,9 @@ size_t shellPrintListStr(const list_t *h)
  *
  * Return: success or failure
  */
-int shellDelNodeAtIndex(list_t **head, unsigned int index)
+int shellDelNodeAtIndex(listS **head, unsigned int index)
 {
-	list_t *nde, *prev_nde;
+	listS *nde, *prev_nde;
 	unsigned int i = 0;
 
 	if (!head || !*head)
@@ -133,16 +133,16 @@ int shellDelNodeAtIndex(list_t **head, unsigned int index)
  *
  * Return: size
  */
-list_t *hellAddNode(list_t **head, const char *str, int num)
+listS *hellAddNode(listS **head, const char *str, int num)
 {
-	list_t *new_hd;
+	listS *new_hd;
 
 	if (!head)
 		return (NULL);
-	new_hd= malloc(sizeof(list_t));
+	new_hd= malloc(sizeof(listS));
 	if (!new_hd)
 		return (NULL);
-	shell__memset((void *)new_hd, 0, sizeof(list_t));
+	shell__memset((void *)new_hd, 0, sizeof(listS));
 	new_hd->num = num;
 	if (str)
 	{

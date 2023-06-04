@@ -38,15 +38,15 @@
 extern char **environ;
 
 /* toem_shloop.c */
-int shell_hsh(info_t *, char **);
-int findBuiltin(info_t *);
-void find_shellCMD(info_t *);
-void fork_shellCMD(info_t *);
+int shell_hsh(p_info *, char **);
+int findBuiltin(p_info *);
+void find_shellCMD(p_info *);
+void fork_shellCMD(p_info *);
 
 /* toem_parser.c */
-int is_shellCMD(info_t *, char *);
+int is_shellCMD(p_info *, char *);
 char *dup_shellChars(char *, int, int);
-char *find_shellPath(info_t *, char *, char *);
+char *find_shellPath(p_info *, char *, char *);
 
 /* toem_errors.c */
 void shell_Eputs(char *);
@@ -84,75 +84,75 @@ void *shell_realloc(void *, unsigned int, unsigned int);
 int p_free(void **);
 
 /* toem_atoi.c */
-int interact(info_t *);
+int interact(p_info *);
 int isDelim(char, char *);
 int shell_isAlpha(int);
 int shell_atoi(char *);
 
 /* toem_errors1.c */
 int shell_errAtoi(char *);
-void shellPrint_error(info_t *, char *);
+void shellPrint_error(p_info *, char *);
 int shellPrint_decimal(int, int);
 char *convertNumber(long int, int, int);
 void shell_remove(char *);
 
 /* toem_builtin.c */
-int shell_exit(info_t *);
-int shell_cd(info_t *);
-int shell_help(info_t *);
+int shell_exit(p_info *);
+int shell_cd(p_info *);
+int shell_help(p_info *);
 
 /* toem_builtin1.c */
-int shell_history(info_t *);
-int shell_alias(info_t *);
+int shell_history(p_info *);
+int shell_alias(p_info *);
 
 /*toem_getline.c */
-ssize_t shellGet_input(info_t *);
-int shellGet_line(info_t *, char **, size_t *);
+ssize_t shellGet_input(p_info *);
+int shellGet_line(p_info *, char **, size_t *);
 void shell_handler(int);
 
 /* toem_getinfo.c */
-void shellClear_info(info_t *);
-void shellSet_info(info_t *, char **);
-void shellFree_info(info_t *, int);
+void shellClear_info(p_info *);
+void shellSet_info(p_info *, char **);
+void shellFree_info(p_info *, int);
 
 /* toem_environ.c */
-char *shellGet_eviron(info_t *, const char *);
-int shellEviron(info_t *);
-int shellSetEvison(info_t *);
-int shellUnsetEnviron(info_t *);
-int shellPopulateEnvList(info_t *);
+char *shellGet_eviron(p_info *, const char *);
+int shellEviron(p_info *);
+int shellSetEvison(p_info *);
+int shellUnsetEnviron(p_info *);
+int shellPopulateEnvList(p_info *);
 
 /* toem_getenv.c */
-char **getEnviron(info_t *);
-int unsetEnv(info_t *, char *);
-int setEnv(info_t *, char *, char *);
+char **getEnviron(p_info *);
+int unsetEnv(p_info *, char *);
+int setEnv(p_info *, char *, char *);
 
 /* toem_history.c */
-char *getHistoryFile(info_t *info);
-int writeHistory(info_t *info);
-int readHistory(info_t *info);
-int buildHistoryList(info_t *info, char *buf, int linecount);
-int renumberHistory(info_t *info);
+char *getHistoryFile(p_info *info);
+int writeHistory(p_info *info);
+int readHistory(p_info *info);
+int buildHistoryList(p_info *info, char *buf, int linecount);
+int renumberHistory(p_info *info);
 
 /* toem_lists.c */
-list_t *hellAddNode(list_t **, const char *, int);
-list_t *shellAddNodeEnd(list_t **, const char *, int);
-size_t shellPrintListStr(const list_t *);
-int shellDelNodeAtIndex(list_t **, unsigned int);
-void shellFreeList(list_t **);
+listS *hellAddNode(listS **, const char *, int);
+listS *shellAddNodeEnd(listS **, const char *, int);
+size_t shellPrintListStr(const listS *);
+int shellDelNodeAtIndex(listS **, unsigned int);
+void shellFreeList(listS **);
 
 /* toem_lists1.c */
-size_t shellListLen(const list_t *);
-char **shellListToStrings(list_t *);
-size_t shell_printList(const list_t *);
-list_t *stringStartsWithPrefix(list_t *, char *, char);
-ssize_t getNodeIndex(list_t *, list_t *);
+size_t shellListLen(const listS *);
+char **shellListToStrings(listS *);
+size_t shell_printList(const listS *);
+listS *stringStartsWithPrefix(listS *, char *, char);
+ssize_t getNodeIndex(listS *, listS *);
 
 /* toem_vars.c */
-int shell_isChain(info_t *, char *, size_t *);
-void checkChain(info_t *, char *, size_t *, size_t, size_t);
-int replaceAlias(info_t *);
-int replaceVariables(info_t *);
+int shell_isChain(p_info *, char *, size_t *);
+void checkChain(p_info *, char *, size_t *, size_t, size_t);
+int replaceAlias(p_info *);
+int replaceVariables(p_info *);
 int replaceString(char **, char *);
 
 #endif

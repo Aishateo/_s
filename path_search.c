@@ -7,7 +7,7 @@
  *
  * Return: 1 if true, 0 otherwise
  */
-int is_shellCMD(info_t *info, char *path)
+int is_shellCMD(p_info *info, char *path)
 {
 	struct stat st;
 
@@ -50,7 +50,7 @@ char *dup_shellChars(char *pathstr, int start, int stop)
  *
  * Return: full path of cmd if found or NULL
  */
-char *find_shellPath(info_t *info, char *pathstr, char *cmd)
+char *find_shellPath(p_info *info, char *pathstr, char *cmd)
 {
 	int i = 0, curr_pos = 0;
 	char *path;

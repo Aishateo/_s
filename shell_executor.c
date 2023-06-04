@@ -7,7 +7,7 @@
  *
  * Return: 0, 1, or error
  */
-int shell_hsh(info_t *info, char **av)
+int shell_hsh(p_info *info, char **av)
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;
@@ -49,7 +49,7 @@ int shell_hsh(info_t *info, char **av)
  *
  * Return: void
  */
-void fork_shellCMD(info_t *info)
+void fork_shellCMD(p_info *info)
 {
 	pid_t child_pid;
 
@@ -90,7 +90,7 @@ void fork_shellCMD(info_t *info)
  *
  * Return: -1, 0, 1, 2
  */
-int findBuiltin(info_t *info)
+int findBuiltin(p_info *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
@@ -108,7 +108,7 @@ int findBuiltin(info_t *info)
 	for (i = 0; builtintbl[i].type; i++)
 		if (shell_strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
-			info->line_count++;
+			info->lineCount++;
 			built_in_ret = builtintbl[i].func(info);
 			break;
 		}
@@ -121,16 +121,16 @@ int findBuiltin(info_t *info)
  *
  * Return: void
  */
-void find_shellCMD(info_t *info)
+void find_shellCMD(p_info *info)
 {
 	char *path = NULL;
 	int i, k;
 
 	info->path = info->argv[0];
-	if (info->linecount_flag == 1)
+	if (info->lineCountFlag == 1)
 	{
-		info->line_count++;
-		info->linecount_flag = 0;
+		info->lineCount++;
+		info->lineCountFlag = 0;
 	}
 	for (i = 0, k = 0; info->arg[i]; i++)
 		if (!isDelim(info->arg[i], " \t\n"))

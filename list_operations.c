@@ -6,7 +6,7 @@
  *
  * Return: size of list
  */
-size_t shellListLen(const list_t *h)
+size_t shellListLen(const listS *h)
 {
 	size_t i = 0;
 
@@ -24,9 +24,9 @@ size_t shellListLen(const list_t *h)
  *
  * Return: array of strings
  */
-char **shellListToStrings(list_t *head)
+char **shellListToStrings(listS *head)
 {
-	list_t *node = head;
+	listS *node = head;
 	size_t i = shellListLen(head), j;
 	char **strs;
 	char *str;
@@ -56,12 +56,12 @@ char **shellListToStrings(list_t *head)
 
 
 /**
- * shell_printList - prints all elements of a list_t linked list
+ * shell_printList - prints all elements of a listS linked list
  * @h: pointer to first node
  *
  * Return: size of list
  */
-size_t shell_printList(const list_t *h)
+size_t shell_printList(const listS *h)
 {
 	size_t i = 0;
 
@@ -86,7 +86,7 @@ size_t shell_printList(const list_t *h)
  *
  * Return: match node or null
  */
-list_t *stringStartsWithPrefix(list_t *node, char *prefix, char c)
+listS *stringStartsWithPrefix(listS *node, char *prefix, char c)
 {
 	char *p = NULL;
 
@@ -107,7 +107,7 @@ list_t *stringStartsWithPrefix(list_t *node, char *prefix, char c)
  *
  * Return: index of node or -1
  */
-ssize_t getNodeIndex(list_t *head, list_t *node)
+ssize_t getNodeIndex(listS *head, listS *node)
 {
 	size_t i = 0;
 

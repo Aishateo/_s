@@ -10,11 +10,11 @@
  *
  * Return: Void
  */
-void checkChain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
+void checkChain(p_info *info, char *buf, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
 
-	if (info->cmd_buf_type == CMD_AND)
+	if (info->cmdBufType == CMD_AND)
 	{
 		if (info->status)
 		{
@@ -22,7 +22,7 @@ void checkChain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 			j = len;
 		}
 	}
-	if (info->cmd_buf_type == CMD_OR)
+	if (info->cmdBufType == CMD_OR)
 	{
 		if (!info->status)
 		{
@@ -42,7 +42,7 @@ void checkChain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
  *
  * Return: 1 if chain delimeter, 0 otherwise
  */
-int shell_isChain(info_t *info, char *buf, size_t *p)
+int shell_isChain(p_info *info, char *buf, size_t *p)
 {
 	size_t j = *p;
 
@@ -50,18 +50,18 @@ int shell_isChain(info_t *info, char *buf, size_t *p)
 	{
 		buf[j] = 0;
 		j++;
-		info->cmd_buf_type = CMD_OR;
+		info->cmdBufType = CMD_OR;
 	}
 	else if (buf[j] == '&' && buf[j + 1] == '&')
 	{
 		buf[j] = 0;
 		j++;
-		info->cmd_buf_type = CMD_AND;
+		info->cmdBufType = CMD_AND;
 	}
 	else if (buf[j] == ';') /* found end of this command */
 	{
 		buf[j] = 0; /* replace semicolon with null */
-		info->cmd_buf_type = CMD_CHAIN;
+		info->cmdBufType = CMD_CHAIN;
 	}
 	else
 		return (0);
@@ -75,10 +75,10 @@ int shell_isChain(info_t *info, char *buf, size_t *p)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int replaceAlias(info_t *info)
+int replaceAlias(p_info *info)
 {
 	int i;
-	list_t *node;
+	listS *node;
 	char *p;
 
 	for (i = 0; i < 10; i++)
@@ -104,10 +104,10 @@ int replaceAlias(info_t *info)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int replaceVariables(info_t *info)
+int replaceVariables(p_info *info)
 {
 	int i = 0;
-	list_t *node;
+	listS *node;
 
 	for (i = 0; info->argv[i]; i++)
 	{

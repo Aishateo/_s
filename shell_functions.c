@@ -6,7 +6,7 @@
  *          constant function prototype.
  * Return: Always 0
  */
-int shellEviron(info_t *info)
+int shellEviron(p_info *info)
 {
 	shellPrintListStr(info->env);
 	return (0);
@@ -19,9 +19,9 @@ int shellEviron(info_t *info)
  *
  * Return: the value
  */
-char *shellGet_eviron(info_t *info, const char *name)
+char *shellGet_eviron(p_info *info, const char *name)
 {
-	list_t *node = info->env;
+	listS *node = info->env;
 	char *p;
 
 	while (node)
@@ -41,7 +41,7 @@ char *shellGet_eviron(info_t *info, const char *name)
  *        constant function prototype.
  *  Return: Always 0
  */
-int shellSetEvison(info_t *info)
+int shellSetEvison(p_info *info)
 {
 	if (info->argc != 3)
 	{
@@ -59,7 +59,7 @@ int shellSetEvison(info_t *info)
  *        constant function prototype.
  * Return: Always 0
  */
-int shellUnsetEnviron(info_t *info)
+int shellUnsetEnviron(p_info *info)
 {
 	int i;
 
@@ -80,9 +80,9 @@ int shellUnsetEnviron(info_t *info)
  *          constant function prototype.
  * Return: Always 0
  */
-int shellPopulateEnvList(info_t *info)
+int shellPopulateEnvList(p_info *info)
 {
-	list_t *node = NULL;
+	listS *node = NULL;
 	size_t i;
 
 	for (i = 0; environ[i]; i++)

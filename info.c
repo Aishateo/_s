@@ -5,14 +5,14 @@
  * @info: address
  * @all: fields
  */
-void shellFree_info(info_t *info, int all)
+void shellFree_info(p_info *info, int all)
 {
 	s_free(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 	if (all)
 	{
-		if (!info->cmd_buf)
+		if (!info->cmdBuf)
 			free(info->arg);
 		if (info->env)
 			shellFreeList(&(info->env));
@@ -22,9 +22,9 @@ void shellFree_info(info_t *info, int all)
 			shellFreeList(&(info->alias));
 		s_free(info->environ);
 			info->environ = NULL;
-		p_free((void **)info->cmd_buf);
-		if (info->readfd > 2)
-			close(info->readfd);
+		p_free((void **)info->cmdBuf);
+		if (info->readFD > 2)
+			close(info->readFD);
 		shell_putchar(BUF_FLUSH);
 	}
 }
@@ -34,7 +34,7 @@ void shellFree_info(info_t *info, int all)
  * @info: address
  * @av: vector
  */
-void shellSet_info(info_t *info, char **av)
+void shellSet_info(p_info *info, char **av)
 {
 	int it = 0;
 
@@ -61,10 +61,10 @@ void shellSet_info(info_t *info, char **av)
 }
 
 /**
- * shellClear_info - initializes info_t struct
+ * shellClear_info - initializes p_info struct
  * @info: struct address
  */
-void shellClear_info(info_t *info)
+void shellClear_info(p_info *info)
 {
 	info->arg = NULL;
 	info->argv = NULL;

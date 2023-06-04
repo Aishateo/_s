@@ -6,9 +6,9 @@
  *
  * Return: 1 if interact mode
  */
-int interact(info_t *info)
+int interact(p_info *info)
 {
-	return (isatty(STDIN_FILENO) && info->readfd <= 2);
+	return (isatty(STDIN_FILENO) && info->readFD <= 2);
 }
 
 /**

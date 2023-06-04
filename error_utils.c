@@ -53,11 +53,11 @@ int shell_errAtoi(char *s)
  * @estr: string containing
  * Return: 0 if no numbers in string
  */
-void shellPrint_error(info_t *info, char *estr)
+void shellPrint_error(p_info *info, char *estr)
 {
 	shell_Eputs(info->fname);
 	shell_Eputs(": ");
-	shellPrint_decimal(info->line_count, STDERR_FILENO);
+	shellPrint_decimal(info->lineCount, STDERR_FILENO);
 	shell_Eputs(": ");
 	shell_Eputs(info->argv[0]);
 	shell_Eputs(": ");

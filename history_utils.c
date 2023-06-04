@@ -6,9 +6,9 @@
  *
  * Return: count
  */
-int renumberHistory(info_t *info)
+int renumberHistory(p_info *info)
 {
-	list_t *nde = info->history;
+	listS *nde = info->history;
 	int i = 0;
 
 	while (nde)
@@ -25,11 +25,11 @@ int renumberHistory(info_t *info)
  *
  * Return: 1 or -1
  */
-int writeHistory(info_t *info)
+int writeHistory(p_info *info)
 {
 	ssize_t fdd;
 	char *filename = getHistoryFile(info);
-	list_t *nde = NULL;
+	listS *nde = NULL;
 
 	if (!filename)
 		return (-1);
@@ -54,7 +54,7 @@ int writeHistory(info_t *info)
  *
  * Return: success, 0
  */
-int readHistory(info_t *info)
+int readHistory(p_info *info)
 {
 	int i, last = 0, linecount = 0;
 	ssize_t fdd, rdlen, fsize = 0;
@@ -104,7 +104,7 @@ int readHistory(info_t *info)
  * Return: string history
  */
 
-char *getHistoryFile(info_t *info)
+char *getHistoryFile(p_info *info)
 {
 	char *buff, *dir;
 
@@ -129,9 +129,9 @@ char *getHistoryFile(info_t *info)
  *
  * Return: Always 0
  */
-int buildHistoryList(info_t *info, char *buf, int linecount)
+int buildHistoryList(p_info *info, char *buf, int linecount)
 {
-	list_t *nde = NULL;
+	listS *nde = NULL;
 
 	if (info->history)
 		nde = info->history;

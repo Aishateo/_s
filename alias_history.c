@@ -7,7 +7,7 @@
  *        constant function prototype.
  *  Return: Always 0
  */
-int shell_history(info_t *info)
+int shell_history(p_info *info)
 {
 	shell_printList(info->history);
 	return (0);
@@ -20,7 +20,7 @@ int shell_history(info_t *info)
  *
  * Return: Always 0 on success, 1 on error
  */
-int unset_alias(info_t *info, char *str)
+int unset_alias(p_info *info, char *str)
 {
 	char *p, c;
 	int ret;
@@ -43,7 +43,7 @@ int unset_alias(info_t *info, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *info, char *str)
+int set_alias(p_info *info, char *str)
 {
 	char *p;
 
@@ -63,7 +63,7 @@ int set_alias(info_t *info, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int print_alias(list_t *node)
+int print_alias(listS *node)
 {
 	char *p = NULL, *a = NULL;
 
@@ -86,11 +86,11 @@ int print_alias(list_t *node)
  *          constant function prototype.
  *  Return: Always 0
  */
-int shell_alias(info_t *info)
+int shell_alias(p_info *info)
 {
 	int i = 0;
 	char *p = NULL;
-	list_t *node = NULL;
+	listS *node = NULL;
 
 	if (info->argc == 1)
 	{

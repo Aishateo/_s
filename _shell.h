@@ -9,7 +9,7 @@ typedef struct liststr
 	int num;
 	char *str;
 	struct liststr *next;
-} list_t;
+} listS;
 
 /**
  * struct passinfo - contains pseudo-arguements to pass into a function,
@@ -18,19 +18,19 @@ typedef struct liststr
  * @argv:an array of strings generated from arg
  * @path: a string path for the current command
  * @argc: the argument count
- * @line_count: the error count
+ * @lineCount: the error count
  * @err_num: the error code for exit()s
- * @linecount_flag: if on count this line of input
+ * @lineCountFlag: if on count this line of input
  * @fname: the program filename
  * @env: linked list local copy of environ
  * @environ: custom modified copy of environ from LL env
  * @history: the history node
  * @alias: the alias node
- * @env_changed: on if environ was changed
+ * @envChanged: on if environ was changed
  * @status: the return status of the last exec'd command
- * @cmd_buf: address of pointer to cmd_buf, on if chaining
- * @cmd_buf_type: CMD_type ||, &&, ;
- * @readfd: the fd from which to read line input
+ * @cmdBuf: address of pointer to cmdBuf, on if chaining
+ * @cmdBufType: CMD_type ||, &&, ;
+ * @readFD: the fd from which to read line input
  * @histcount: the history line number count
  */
 typedef struct passinfo
@@ -39,22 +39,22 @@ typedef struct passinfo
 	char **argv;
 	char *path;
 	int argc;
-	unsigned int line_count;
+	unsigned int lineCount;
 	int err_num;
-	int linecount_flag;
+	int lineCountFlag;
 	char *fname;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
+	listS *env;
+	listS *history;
+	listS *alias;
 	char **environ;
-	int env_changed;
+	int envChanged;
 	int status;
 
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
-	int readfd;
+	char **cmdBuf; /* pointer to cmd ; chain buffer, for memory mangement */
+	int cmdBufType; /* CMD_type ||, &&, ; */
+	int readFD;
 	int histcount;
-} info_t;
+} p_info;
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
@@ -68,5 +68,5 @@ typedef struct passinfo
 typedef struct builtin
 {
 	char *type;
-	int (*func)(info_t *);
+	int (*func)(p_info *);
 } builtin_table;
