@@ -1,10 +1,16 @@
 #include "shell.h"
 
 /**
- * **splits_str - splits a string
- * @str: input string
- * @d: delimeter
- * Return: pointer to an array
+ * splits_str - Splits a string into an array
+ * of substrings using a delimiter.
+ *
+ * @str: The string to be split.
+ * @d: The delimiter character.
+ *
+ * Return: An array of strings (char**)
+ * containing the substrings.
+ * NULL is returned if the input string is NULL
+ * or empty, or if memory allocation fails.
  */
 char **splits_str(char *str, char d)
 {
@@ -46,12 +52,17 @@ char **splits_str(char *str, char d)
 }
 
 /**
- * **splits_strToWrd - splits a string into words. Repeat delimiters are ignored
- * @str: the input string
- * @d: the delimeter string
- * Return: a pointer to an array of strings, or NULL on failure
+ * splits_strToWrd - Splits a string into an array
+ * of substrings using multiple delimiters.
+ *
+ * @str: The string to be split.
+ * @d: The delimiter string.
+ *
+ * Return: An array of strings (char**)
+ * containing the substrings.
+ * NULL is returned if the input string
+ * is NULL or empty, or if memory allocation fails.
  */
-
 char **splits_strToWrd(char *str, char *d)
 {
 	int i, j, k, m, numwords = 0;

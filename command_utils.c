@@ -1,14 +1,15 @@
 #include "shell.h"
 
 /**
- * checkChain - checks we should continue chaining based on last status
- * @info: the parameter struct
- * @buf: the char buffer
- * @p: address of current position in buf
- * @i: starting position in buf
- * @len: length of buf
+ * checkChain - Checks the command buffer
+ * type and updates the index.
  *
- * Return: Void
+ * @info: Pointer to the program information.
+ * @buf: Pointer to the command buffer.
+ * @p: Pointer to the current index.
+ * @i: The current index.
+ * @len: The length of the buffer.
+ * Return: None.
  */
 void checkChain(p_info *info, char *buf, size_t *p, size_t i, size_t len)
 {
@@ -35,12 +36,13 @@ void checkChain(p_info *info, char *buf, size_t *p, size_t i, size_t len)
 }
 
 /**
- * shell_isChain - test if current char in buffer is a chain delimeter
- * @info: the parameter struct
- * @buf: the char buffer
- * @p: address of current position in buf
+ * shell_isChain - Checks if a chain operator
+ * is present in the command buffer.
  *
- * Return: 1 if chain delimeter, 0 otherwise
+ * @info: Pointer to the program information.
+ * @buf: Pointer to the command buffer.
+ * @p: Pointer to the current index.
+ * Return: 1 if a chain operator is found, 0 otherwise.
  */
 int shell_isChain(p_info *info, char *buf, size_t *p)
 {
@@ -58,9 +60,9 @@ int shell_isChain(p_info *info, char *buf, size_t *p)
 		j++;
 		info->cmdBufType = CMD_AND;
 	}
-	else if (buf[j] == ';') /* found end of this command */
+	else if (buf[j] == ';')
 	{
-		buf[j] = 0; /* replace semicolon with null */
+		buf[j] = 0;
 		info->cmdBufType = CMD_CHAIN;
 	}
 	else
@@ -70,10 +72,11 @@ int shell_isChain(p_info *info, char *buf, size_t *p)
 }
 
 /**
- * replaceAlias - replaces an aliases in the tokenized string
- * @info: the parameter struct
+ * replaceAlias - Replaces the command with
+ * its alias if available.
  *
- * Return: 1 if replaced, 0 otherwise
+ * @info: Pointer to the program information.
+ * Return: 1 if the alias is replaced, 0 otherwise.
  */
 int replaceAlias(p_info *info)
 {
@@ -99,10 +102,11 @@ int replaceAlias(p_info *info)
 }
 
 /**
- * replaceVariables - replaces vars in the tokenized string
- * @info: the parameter struct
+ * replaceVariables - Replaces variables in the
+ * command with their corresponding values.
  *
- * Return: 1 if replaced, 0 otherwise
+ * @info: Pointer to the program information.
+ * Return: 0 (placeholder return value).
  */
 int replaceVariables(p_info *info)
 {
@@ -140,11 +144,11 @@ int replaceVariables(p_info *info)
 }
 
 /**
- * replaceString - replaces string
- * @old: address of old string
- * @new: new string
+ * replaceString - Replaces a string with a new string.
  *
- * Return: 1 if replaced, 0 otherwise
+ * @old: Pointer to the old string to be replaced.
+ * @new: Pointer to the new string.
+ * Return: 1 on success.
  */
 int replaceString(char **old, char *new)
 {

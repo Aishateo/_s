@@ -1,9 +1,11 @@
 #include "shell.h"
 
 /**
- * shellFree_info - frees info
- * @info: address
- * @all: fields
+ * shellFree_info - Frees memory associated with the p_info struct.
+ *
+ * @info: Pointer to the p_info struct.
+ * @all: Flag indicating whether to free all resources.
+ * Return: None.
  */
 void shellFree_info(p_info *info, int all)
 {
@@ -30,9 +32,12 @@ void shellFree_info(p_info *info, int all)
 }
 
 /**
- * shellSet_info - initializes struct
- * @info: address
- * @av: vector
+ * shellSet_info - Sets the values of the
+ * p_info struct using the command arguments.
+ *
+ * @info: Pointer to the p_info struct.
+ * @av: Array of command arguments.
+ * Return: None.
  */
 void shellSet_info(p_info *info, char **av)
 {
@@ -61,8 +66,10 @@ void shellSet_info(p_info *info, char **av)
 }
 
 /**
- * shellClear_info - initializes p_info struct
- * @info: struct address
+ * shellClear_info - Clears the values of the p_info struct.
+ *
+ * @info: Pointer to the p_info struct.
+ * Return: None.
  */
 void shellClear_info(p_info *info)
 {

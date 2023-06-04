@@ -1,10 +1,13 @@
 #include "shell.h"
 
 /**
- * shell_strdup - duplicates a string
- * @str: the string to duplicate
+ * shell_strdup - Duplicates a string.
  *
- * Return: pointer to the duplicated string
+ * @str: The string to duplicate.
+ * Return: Pointer to a newly allocated memory
+ * block containing the duplicated string.
+ * NULL is returned if str is NULL
+ * or if memory allocation fails.
  */
 char *shell_strdup(const char *str)
 {
@@ -24,11 +27,12 @@ char *shell_strdup(const char *str)
 }
 
 /**
- * shell_strcpy - copy string
- * @dest: destination
- * @src: source
+ * shell_strcpy - Copies a string from source to destination.
  *
- * Return: pointer to destination
+ * @dest: Pointer to the destination string.
+ * @src: Pointer to the source string.
+ *
+ * Return: Pointer to the destination string (dest).
  */
 char *shell_strcpy(char *dest, char *src)
 {
@@ -46,10 +50,10 @@ char *shell_strcpy(char *dest, char *src)
 }
 
 /**
- * shell_puts - prints an input string
- * @str: the string to be printed
+ * shell_puts - Writes a string to the standard output.
  *
- * Return: Nothing
+ * @str: Pointer to the string to be written.
+ * Return: None.
  */
 void shell_puts(char *str)
 {
@@ -65,11 +69,11 @@ void shell_puts(char *str)
 }
 
 /**
- * shell_putchar - writes the character c to stdout
- * @c: The character to print
+ * shell_putchar - Writes a character to the standard output.
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * @c: The character to be written.
+ *
+ * Return: 1 on success.
  */
 int shell_putchar(char c)
 {

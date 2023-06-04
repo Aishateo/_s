@@ -1,10 +1,11 @@
 #include "shell.h"
 
 /**
- * interact - interact mode
- * @info: struct for info
+ * interact - Checks if the shell is running in an interactive mode.
  *
- * Return: 1 if interact mode
+ * @info: Pointer to the p_info struct.
+ * Return: 1 if the shell is running interactively,
+ * 0 otherwise.
  */
 int interact(p_info *info)
 {
@@ -12,10 +13,11 @@ int interact(p_info *info)
 }
 
 /**
- * isDelim - checks  delimeter
- * @ch: char
- * @delim: the delimeter
- * Return: 1 if true, 0 if false
+ * isDelim - Checks if a character is a delimiter.
+ *
+ * @ch: Character to check.
+ * @delim: String containing delimiters.
+ * Return: 1 if the character is a delimiter, 0 otherwise.
  */
 int isDelim(char ch, char *delim)
 {
@@ -26,11 +28,11 @@ int isDelim(char ch, char *delim)
 }
 
 /**
- * shell_atoi - converts a string to an integer
- * @s: the string to be converted
- * Return: 0 if no numbers in string
+ * shell_atoi - Converts a string to an integer.
+ *
+ * @s: String to convert.
+ * Return: The converted integer value.
  */
-
 int shell_atoi(char *s)
 {
 	int i, sign = 1, flag = 0, output;
@@ -60,11 +62,12 @@ int shell_atoi(char *s)
 }
 
 /**
- * shell_isAlpha - checks for alphabetic character
- * @ch: The character
- * Return: 1 if c is alphabetic, 0 otherwise
+ * shell_isAlpha - Checks if a character is an alphabetic character.
+ *
+ * @ch: Character to check.
+ * Return: 1 if the character is an alphabetic character,
+ * 0 otherwise.
  */
-
 int shell_isAlpha(int ch)
 {
 	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))

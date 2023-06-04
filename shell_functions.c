@@ -1,10 +1,11 @@
 #include "shell.h"
 
 /**
- * shellEviron - prints the current environment
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * shellEviron - Prints the list of
+ * environment variables.
+ *
+ * @info: The program information.
+ * Return: 0 on success.
  */
 int shellEviron(p_info *info)
 {
@@ -13,11 +14,13 @@ int shellEviron(p_info *info)
 }
 
 /**
- * shellGet_eviron - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
- * @name: env var name
+ * shellGet_eviron - Retrieves the environment
+ * variable with the specified name.
  *
- * Return: the value
+ * @info: The program information.
+ * @name: The name of the environment variable to retrieve.
+ * Return: A pointer to the value of the
+ * environment variable if found, or NULL otherwise.
  */
 char *shellGet_eviron(p_info *info, const char *name)
 {
@@ -35,11 +38,11 @@ char *shellGet_eviron(p_info *info, const char *name)
 }
 
 /**
- * shellSetEvison - Initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * shellSetEvison - Sets a new environment variable.
+ *
+ * @info: The program information.
+ * Return: 0 on success, 1 if the number
+ * of arguments is incorrect.
  */
 int shellSetEvison(p_info *info)
 {
@@ -54,10 +57,11 @@ int shellSetEvison(p_info *info)
 }
 
 /**
- * shellUnsetEnviron - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- * Return: Always 0
+ * shellUnsetEnviron - Unsets environment variables.
+ *
+ * @info: The program information.
+ * Return: 0 on success, 1 if too few arguments
+ * are provided.
  */
 int shellUnsetEnviron(p_info *info)
 {
@@ -75,10 +79,11 @@ int shellUnsetEnviron(p_info *info)
 }
 
 /**
- * shellPopulateEnvList - populates env linked list
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * shellPopulateEnvList - Populates the environment list
+ * from the existing environment variables.
+ *
+ * @info: The program information.
+ * Return: 0 on success.
  */
 int shellPopulateEnvList(p_info *info)
 {
@@ -90,4 +95,3 @@ int shellPopulateEnvList(p_info *info)
 	info->env = node;
 	return (0);
 }
-

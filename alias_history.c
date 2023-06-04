@@ -1,11 +1,9 @@
 #include "shell.h"
 
 /**
- * shell_history - displays the history list, one command by line, preceded
- *              with line numbers, starting at 0.
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * shell_history - Displays the shell history.
+ * @info: Pointer to the p_info structure.
+ * Return: 0 on success.
  */
 int shell_history(p_info *info)
 {
@@ -14,11 +12,10 @@ int shell_history(p_info *info)
 }
 
 /**
- * unset_alias - sets alias to string
- * @info: parameter struct
- * @str: the string alias
- *
- * Return: Always 0 on success, 1 on error
+ * unset_alias - Unsets an alias by removing it from the alias list.
+ * @info: Pointer to the p_info structure.
+ * @str: String containing the alias to unset.
+ * Return: 1 if the alias was not found, otherwise 0.
  */
 int unset_alias(p_info *info, char *str)
 {
@@ -37,11 +34,11 @@ int unset_alias(p_info *info, char *str)
 }
 
 /**
- * set_alias - sets alias to string
- * @info: parameter struct
- * @str: the string alias
- *
- * Return: Always 0 on success, 1 on error
+ * set_alias - Sets an alias by adding it to the alias list.
+ * @info: Pointer to the p_info structure.
+ * @str: String containing the alias to set.
+ * Return: 1 if the alias format is incorrect
+ * or unset_alias fails, otherwise 0.
  */
 int set_alias(p_info *info, char *str)
 {
@@ -58,10 +55,9 @@ int set_alias(p_info *info, char *str)
 }
 
 /**
- * print_alias - prints an alias string
- * @node: the alias node
- *
- * Return: Always 0 on success, 1 on error
+ * print_alias - Prints the alias in the specified node.
+ * @node: Pointer to the alias node to print.
+ * Return: 0 on success, otherwise 1.
  */
 int print_alias(listS *node)
 {
@@ -81,10 +77,9 @@ int print_alias(listS *node)
 }
 
 /**
- * shell_alias - mimics the alias builtin (man alias)
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- *  Return: Always 0
+ * shell_alias - Displays the shell aliases.
+ * @info: Pointer to the p_info structure.
+ * Return: 0 on success.
  */
 int shell_alias(p_info *info)
 {
@@ -113,4 +108,3 @@ int shell_alias(p_info *info)
 
 	return (0);
 }
-

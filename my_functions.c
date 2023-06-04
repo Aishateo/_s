@@ -1,11 +1,15 @@
 #include "shell.h"
 
 /**
- * shell__memset - fills memory with a constant byte
- * @s: the pointer to the memory area
- * @b: the byte to fill *s with
- * @n: the amount of bytes to be filled
- * Return: (s) a pointer to the memory area s
+ * shell__memset - Fills a block of memory
+ * with a specified value.
+ *
+ * @s: Pointer to the memory block to fill.
+ * @b: Value to be set (as an unsigned char).
+ * @n: Number of bytes to be set to the value.
+ *
+ * Return: Pointer to the memory block
+ * after setting the values.
  */
 char *shell__memset(char *s, char b, unsigned int n)
 {
@@ -17,8 +21,12 @@ char *shell__memset(char *s, char b, unsigned int n)
 }
 
 /**
- * s_free - frees a string of strings
- * @pp: string of strings
+ * s_free - Frees the memory allocated for
+ * an array of strings.
+ *
+ * @pp: Pointer to the array of strings (char**)
+ * to be freed.
+ * Return: None.
  */
 void s_free(char **pp)
 {
@@ -32,12 +40,16 @@ void s_free(char **pp)
 }
 
 /**
- * shell_realloc - reallocates a block of memory
- * @ptr: pointer to previous malloc'ated block
- * @old_size: byte size of previous block
- * @new_size: byte size of new block
+ * shell_realloc - Reallocates memory for
+ * a given block with a new size.
  *
- * Return: pointer to da ol'block nameen.
+ * @ptr: Pointer to the memory block to be reallocated.
+ * @old_size: Current size of the memory block.
+ * @new_size: New size of the memory block.
+ *
+ * Return: Pointer to the reallocated memory block.
+ * NULL is returned if memory allocation fails
+ * or if new_size is 0.
  */
 void *shell_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
@@ -60,4 +72,3 @@ void *shell_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	free(ptr);
 	return (p);
 }
-

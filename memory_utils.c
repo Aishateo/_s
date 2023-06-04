@@ -1,10 +1,12 @@
 #include "shell.h"
 
 /**
- * p_free - frees pointer
- * @ptr: address
+ * p_free - Frees the memory pointed
+ * to by ptr and sets it to NULL.
  *
- * Return: 1 or 0.
+ * @ptr: A pointer to a pointer to be freed.
+ * Return: 1 if the memory was freed successfully,
+ * 0 otherwise.
  */
 int p_free(void **ptr)
 {

@@ -1,10 +1,12 @@
 #include "shell.h"
 
 /**
- * renumberHistory - renumbers history
- * @info: arguments
+ * renumberHistory - Renumber the history
+ * entries in the history list.
  *
- * Return: count
+ * @info: Pointer to the p_info structure
+ * containing the shell information.
+ * Return: The total number of history entries.
  */
 int renumberHistory(p_info *info)
 {
@@ -20,10 +22,11 @@ int renumberHistory(p_info *info)
 }
 
 /**
- * writeHistory - creates or appends to file
- * @info: struct
+ * writeHistory - Write the history entries to a file.
  *
- * Return: 1 or -1
+ * @info: Pointer to the p_info structure
+ * containing the shell information.
+ * Return: 1 on success, -1 on failure.
  */
 int writeHistory(p_info *info)
 {
@@ -49,10 +52,13 @@ int writeHistory(p_info *info)
 }
 
 /**
- * readHistory - reads history
- * @info: struct
+ * readHistory - Read the history entries from
+ * a file and build the history list.
  *
- * Return: success, 0
+ * @info: Pointer to the p_info structure
+ * containing the shell information.
+ * Return: The number of history entries on success,
+ * 0 on failure.
  */
 int readHistory(p_info *info)
 {
@@ -98,12 +104,14 @@ int readHistory(p_info *info)
 }
 
 /**
- * getHistoryFile - gets history
- * @info: struct
+ * getHistoryFile - Get the path of the history file.
  *
- * Return: string history
+ * @info: Pointer to the p_info structure
+ * containing the shell information.
+ * Return: A dynamically allocated string
+ * containing the path to the history file.
+ * NULL if an error occurred.
  */
-
 char *getHistoryFile(p_info *info)
 {
 	char *buff, *dir;
@@ -111,7 +119,8 @@ char *getHistoryFile(p_info *info)
 	dir = shellGet_eviron(info, "HOME=");
 	if (!dir)
 		return (NULL);
-	buff = malloc(sizeof(char) * (shell_strlen(dir) + shell_strlen(HIST_FILE) + 2));
+	buff = malloc(sizeof(char) * (shell_strlen(dir) +
+				shell_strlen(HIST_FILE) + 2));
 	if (!buff)
 		return (NULL);
 	buff[0] = 0;
@@ -122,12 +131,14 @@ char *getHistoryFile(p_info *info)
 }
 
 /**
- * buildHistoryList - adds entry to history
- * @info: struct
- * @buf: buffer
- * @linecount: linecount, histcount
+ * buildHistoryList - Add a new history
+ * entry to the history list.
  *
- * Return: Always 0
+ * @info: Pointer to the p_info structure
+ * containing the shell information.
+ * @buf: The buffer containing the history entry.
+ * @linecount: The line count of the history entry.
+ * Return: 0 on success.
  */
 int buildHistoryList(p_info *info, char *buf, int linecount)
 {
