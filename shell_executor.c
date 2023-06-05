@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
- * shell_hsh - main shell
- * @info: the parameter
- * @av: the argument vector
- *
- * Return: 0, 1, or error
+ * shell_hsh - Executes the shell program.
+ * @info: Pointer to the program information struct.
+ * @av: Array of command-line arguments.
+ * Return: The return value of the last executed built-in command.
  */
 int shell_hsh(p_info *info, char **av)
 {
@@ -44,10 +43,9 @@ int shell_hsh(p_info *info, char **av)
 }
 
 /**
- * fork_shellCMD - forks an exec thread
- * @info: the parameter
- *
- * Return: void
+ * fork_shellCMD - Forks a child process
+ * to execute a shell command.
+ * @info: Pointer to the program information struct.
  */
 void fork_shellCMD(p_info *info)
 {
@@ -56,7 +54,6 @@ void fork_shellCMD(p_info *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -69,7 +66,6 @@ void fork_shellCMD(p_info *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{
@@ -83,12 +79,11 @@ void fork_shellCMD(p_info *info)
 	}
 }
 
-
 /**
- * findBuiltin - find
- * @info: the parameter
- *
- * Return: -1, 0, 1, 2
+ * findBuiltin - Finds and executes a built-in command.
+ * @info: Pointer to the program information struct.
+ * Return: The return value of the executed built-in command,
+ * or -1 if not found.
  */
 int findBuiltin(p_info *info)
 {
@@ -116,10 +111,8 @@ int findBuiltin(p_info *info)
 }
 
 /**
- * find_shellCMD - find command
- * @info: the parameter
- *
- * Return: void
+ * find_shellCMD - Finds and executes a shell command.
+ * @info: Pointer to the program information struct.
  */
 void find_shellCMD(p_info *info)
 {

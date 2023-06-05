@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * shellAddNodeEnd - adds a node to end
- * @head: address
- * @str: str
- * @num: node index
+ * shellAddNodeEnd - Adds a new node at the end of a linked list.
  *
- * Return: size of list
+ * @head: A pointer to the head of the linked list.
+ * @str: The string to be stored in the new node.
+ * @num: An integer value to be stored in the new node.
+ * Return: A pointer to the newly added node.
  */
 listS *shellAddNodeEnd(listS **head, const char *str, int num)
 {
@@ -42,10 +42,9 @@ listS *shellAddNodeEnd(listS **head, const char *str, int num)
 }
 
 /**
- * shellFreeList - frees list
- * @head_ptr: address
+ * shellFreeList - Frees the memory occupied by a linked list.
  *
- * Return: void
+ * @head_ptr: A pointer to the head of the linked list.
  */
 void shellFreeList(listS **head_ptr)
 {
@@ -66,10 +65,10 @@ void shellFreeList(listS **head_ptr)
 }
 
 /**
- * shellPrintListStr - prints str element
- * @h: pointer
+ * shellPrintListStr - Prints the strings stored in a linked list.
  *
- * Return: size
+ * @h: A pointer to the head of the linked list.
+ * Return: The number of nodes in the linked list.
  */
 size_t shellPrintListStr(const listS *h)
 {
@@ -86,11 +85,11 @@ size_t shellPrintListStr(const listS *h)
 }
 
 /**
- * shellDelNodeAtIndex - deletes node
- * @head: address
- * @index: index of node
+ * shellDelNodeAtIndex - Deletes a node at a specific index in a linked list.
  *
- * Return: success or failure
+ * @head: A pointer to the head of the linked list.
+ * @index: The index of the node to be deleted.
+ * Return: 1 if the node is successfully deleted, 0 otherwise.
  */
 int shellDelNodeAtIndex(listS **head, unsigned int index)
 {
@@ -126,12 +125,12 @@ int shellDelNodeAtIndex(listS **head, unsigned int index)
 }
 
 /**
- * hellAddNode - adds a node
- * @head: address
- * @str: str field
- * @num: node index
+ * hellAddNode - Adds a new node at the beginning of a linked list.
  *
- * Return: size
+ * @head: A pointer to the head of the linked list.
+ * @str: The string to be stored in the new node.
+ * @num: An integer value to be stored in the new node.
+ * Return: A pointer to the newly added node.
  */
 listS *hellAddNode(listS **head, const char *str, int num)
 {
@@ -139,7 +138,7 @@ listS *hellAddNode(listS **head, const char *str, int num)
 
 	if (!head)
 		return (NULL);
-	new_hd= malloc(sizeof(listS));
+	new_hd = malloc(sizeof(listS));
 	if (!new_hd)
 		return (NULL);
 	shell__memset((void *)new_hd, 0, sizeof(listS));

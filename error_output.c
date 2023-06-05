@@ -1,10 +1,8 @@
 #include "shell.h"
 
 /**
- * shell_Eputs - prints an input string
- * @str: the string to be printed
- *
- * Return: Nothing
+ * shell_Eputs - Writes a string to the standard error output.
+ * @str: The string to write.
  */
 void shell_Eputs(char *str)
 {
@@ -20,11 +18,10 @@ void shell_Eputs(char *str)
 }
 
 /**
- * shell_Eputchar - writes the character c to stderr
- * @c: The character to print
+ * shell_Eputchar - Writes a character to the standard error output.
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * @c: The character to write.
+ * Return: 1 on success.
  */
 int shell_Eputchar(char c)
 {
@@ -42,12 +39,11 @@ int shell_Eputchar(char c)
 }
 
 /**
- * shell_putFD - writes the character c to given fd
- * @c: The character to print
- * @fd: The filedescriptor to write to
+ * shell_putFD - Writes a character to the specified file descriptor.
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * @c: The character to write.
+ * @fd: The file descriptor to write to.
+ * Return: 1 on success.
  */
 int shell_putFD(char c, int fd)
 {
@@ -65,11 +61,11 @@ int shell_putFD(char c, int fd)
 }
 
 /**
- * shell_putsFD - prints an input string
- * @str: the string to be printed
- * @fd: the filedescriptor to write to
+ * shell_putsFD - Writes a string to the specified file descriptor.
  *
- * Return: the number of chars put
+ * @str: The string to write.
+ * @fd: The file descriptor to write to.
+ * Return: The number of characters written.
  */
 int shell_putsFD(char *str, int fd)
 {
@@ -83,4 +79,3 @@ int shell_putsFD(char *str, int fd)
 	}
 	return (i);
 }
-

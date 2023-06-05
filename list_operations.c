@@ -1,10 +1,9 @@
 #include "shell.h"
 
 /**
- * shellListLen - determines length of linked list
- * @h: pointer to first node
- *
- * Return: size of list
+ * shellListLen - Computes the length of a linked list.
+ * @h: The head of the linked list.
+ * Return: The length of the linked list.
  */
 size_t shellListLen(const listS *h)
 {
@@ -19,10 +18,11 @@ size_t shellListLen(const listS *h)
 }
 
 /**
- * shellListToStrings - returns an array of strings of the list->str
- * @head: pointer to first node
+ * shellListToStrings - Converts a linked list
+ * of strings to an array of strings.
  *
- * Return: array of strings
+ * @head: The head of the linked list.
+ * Return: An array of strings representing the linked list.
  */
 char **shellListToStrings(listS *head)
 {
@@ -54,12 +54,10 @@ char **shellListToStrings(listS *head)
 	return (strs);
 }
 
-
 /**
- * shell_printList - prints all elements of a listS linked list
- * @h: pointer to first node
- *
- * Return: size of list
+ * shell_printList - Prints the elements of a linked list.
+ * @h: The head of the linked list.
+ * Return: The number of elements in the linked list.
  */
 size_t shell_printList(const listS *h)
 {
@@ -79,12 +77,13 @@ size_t shell_printList(const listS *h)
 }
 
 /**
- * stringStartsWithPrefix - returns node whose string starts with prefix
- * @node: pointer to list head
- * @prefix: string to match
- * @c: the next character after prefix to match
+ * stringStartsWithPrefix - Finds the first node in a linked list
+ * whose string starts with a prefix.
  *
- * Return: match node or null
+ * @node: The head of the linked list.
+ * @prefix: The prefix string to search for.
+ * @c: The character to compare after the prefix.
+ * Return: A pointer to the first matching node, or NULL if not found.
  */
 listS *stringStartsWithPrefix(listS *node, char *prefix, char c)
 {
@@ -101,11 +100,10 @@ listS *stringStartsWithPrefix(listS *node, char *prefix, char c)
 }
 
 /**
- * getNodeIndex - gets the index of a node
- * @head: pointer to list head
- * @node: pointer to the node
- *
- * Return: index of node or -1
+ * getNodeIndex - Finds the index of a node in a linked list.
+ * @head: The head of the linked list.
+ * @node: The node to find the index of.
+ * Return: The index of the node, or -1 if not found.
  */
 ssize_t getNodeIndex(listS *head, listS *node)
 {

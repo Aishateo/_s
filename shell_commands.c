@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- * shell_help - changes the current directory
- * @info: Structure containing potential arguments.
- * Return: Always 0
+ * shell_help - Displays help information.
+ *
+ * @info: Pointer to the p_info structure.
+ * Return: Always returns 0.
  */
 int shell_help(p_info *info)
 {
@@ -17,9 +18,10 @@ int shell_help(p_info *info)
 }
 
 /**
- * shell_exit - exits
- * @info: Structure containing
- * Return: exits with
+ * shell_exit - Handles the shell exit command.
+ *
+ * @info: Pointer to the p_info structure.
+ * Return: Returns -2 to indicate the shell should exit.
  */
 int shell_exit(p_info *info)
 {
@@ -44,9 +46,10 @@ int shell_exit(p_info *info)
 }
 
 /**
- * shell_cd - changes the current directory
- * @info: Structure for info
- * Return: Always 0
+ * shell_cd - Handles the shell cd (change directory) command.
+ *
+ * @info: Pointer to the p_info structure.
+ * Return: Always returns 0.
  */
 int shell_cd(p_info *info)
 {
@@ -91,4 +94,3 @@ int shell_cd(p_info *info)
 	}
 	return (0);
 }
-

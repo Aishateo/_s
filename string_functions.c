@@ -1,11 +1,13 @@
 #include "shell.h"
 
 /**
- **shell_strncat - concate strings
- *@dest: 1st string
- *@src: 2d string
- *@n: amount of bytes
- *Return: string
+ * shell_strncat - Concatenates a specified number of characters
+ * from the source string to the destination string.
+ *
+ * @dest: The destination string.
+ * @src: The source string.
+ * @n: The maximum number of characters to concatenate.
+ * Return: A pointer to the destination string.
  */
 char *shell_strncat(char *dest, char *src, int n)
 {
@@ -28,11 +30,13 @@ char *shell_strncat(char *dest, char *src, int n)
 }
 
 /**
- **shell_strncpy - string cp
- *@dest: destination
- *@src: source
- *@n: amount
- *Return: string
+ * shell_strncpy - Copies a specified number of characters
+ * from the source string to the destination string.
+ *
+ * @dest: The destination string.
+ * @src: The source string.
+ * @n: The maximum number of characters to copy.
+ * Return: A pointer to the destination string.
  */
 char *shell_strncpy(char *dest, char *src, int n)
 {
@@ -58,10 +62,13 @@ char *shell_strncpy(char *dest, char *src, int n)
 }
 
 /**
- **shell_strchr - locates a character
- *@s: string
- *@c: character
- *Return: pointer to the memory
+ * shell_strchr - Locates the first occurrence of
+ * a character in a string.
+ *
+ * @s: The string to search.
+ * @c: The character to locate.
+ * Return: A pointer to the first occurrence of the
+ * character in the string, or NULL if not found.
  */
 char *shell_strchr(char *s, char c)
 {
@@ -72,4 +79,3 @@ char *shell_strchr(char *s, char c)
 
 	return (NULL);
 }
-

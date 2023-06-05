@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * input_buf - buffers chained commands
- * @info: parameter struct
- * @buf: address of buffer
- * @len: address of len var
+ * input_buf - Reads input from the buffer or stdin.
  *
- * Return: bytes read
+ * @info: The program information.
+ * @buf: The buffer to store the input.
+ * @len: The length of the buffer.
+ * Return: The number of characters read.
  */
 ssize_t input_buf(p_info *info, char **buf, size_t *len)
 {
@@ -28,13 +28,12 @@ ssize_t input_buf(p_info *info, char **buf, size_t *len)
 		{
 			if ((*buf)[r - 1] == '\n')
 			{
-				(*buf)[r - 1] = '\0'; /* remove trailing newline */
+				(*buf)[r - 1] = '\0';
 				r--;
 			}
 			info->lineCountFlag = 1;
 			shell_remove(*buf);
 			buildHistoryList(info, *buf, info->histcount++);
-			/* if (shell_strchr(*buf, ';')) is this a command chain? */
 			{
 				*len = r;
 				info->cmdBuf = buf;
@@ -45,57 +44,57 @@ ssize_t input_buf(p_info *info, char **buf, size_t *len)
 }
 
 /**
- * shellGet_input - gets a line minus the newline
- * @info: parameter struct
+ * shellGet_input - Retrieves input from the buffer.
  *
- * Return: bytes read
+ * @info: The program information.
+ * Return: The length of the input.
  */
 ssize_t shellGet_input(p_info *info)
 {
-	static char *buf; /* the ';' command chain buffer */
+	static char *buf;
 	static size_t i, j, len;
 	ssize_t r = 0;
 	char **buf_p = &(info->arg), *p;
 
 	shell_putchar(BUF_FLUSH);
 	r = input_buf(info, &buf, &len);
-	if (r == -1) /* EOF */
+	if (r == -1)
 		return (-1);
-	if (len) /* we have commands left in the chain buffer */
+	if (len)
 	{
-		j = i; /* init new iterator to current buf position */
-		p = buf + i; /* get pointer for return */
+		j = i;
+		p = buf + i;
 
 		checkChain(info, buf, &j, i, len);
-		while (j < len) /* iterate to semicolon or end */
+		while (j < len)
 		{
 			if (shell_isChain(info, buf, &j))
 				break;
 			j++;
 		}
 
-		i = j + 1; /* increment past nulled ';'' */
-		if (i >= len) /* reached end of buffer? */
+		i = j + 1;
+		if (i >= len)
 		{
-			i = len = 0; /* reset position and length */
+			i = len = 0;
 			info->cmdBufType = CMD_NORM;
 		}
 
-		*buf_p = p; /* pass back pointer to current command position */
-		return (shell_strlen(p)); /* return length of current command */
+		*buf_p = p;
+		return (shell_strlen(p));
 	}
 
-	*buf_p = buf; /* else not a chain, pass back buffer from shellGet_line() */
-	return (r); /* return length of buffer from shellGet_line() */
+	*buf_p = buf;
+	return (r);
 }
 
 /**
- * read_buf - reads a buffer
- * @info: parameter struct
- * @buf: buffer
- * @i: size
+ * read_buf - Reads input from the file descriptor.
  *
- * Return: r
+ * @info: The program information.
+ * @buf: The buffer to store the input.
+ * @i: The current position in the buffer.
+ * Return: The number of characters read.
  */
 ssize_t read_buf(p_info *info, char *buf, size_t *i)
 {
@@ -110,12 +109,12 @@ ssize_t read_buf(p_info *info, char *buf, size_t *i)
 }
 
 /**
- * shellGet_line - gets the next line of input from STDIN
- * @info: parameter struct
- * @ptr: address of pointer to buffer, preallocated or NULL
- * @length: size of preallocated ptr buffer if not NULL
+ * shellGet_line - Reads a line of input from the buffer.
  *
- * Return: s
+ * @info: The program information.
+ * @ptr: The pointer to the input buffer.
+ * @length: The length of the input buffer.
+ * Return: The length of the input line.
  */
 int shellGet_line(p_info *info, char **ptr, size_t *length)
 {
@@ -157,10 +156,8 @@ int shellGet_line(p_info *info, char **ptr, size_t *length)
 }
 
 /**
- * shell_handler - blocks ctrl-C
- * @sig_num: the signal number
- *
- * Return: void
+ * shell_handler - Signal handler for shell.
+ * @sig_num: The signal number.
  */
 void shell_handler(__attribute__((unused))int sig_num)
 {
@@ -168,4 +165,3 @@ void shell_handler(__attribute__((unused))int sig_num)
 	shell_puts("$ ");
 	shell_putchar(BUF_FLUSH);
 }
-

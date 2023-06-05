@@ -1,11 +1,9 @@
 #include "shell.h"
 
-
 /**
- * shell_remove - function replaces first
- * @buf: address of the string
- *
- * Return: Always 0;
+ * shell_remove - Removes the '#' character
+ * and everything after it from a string.
+ * @buf: The input string.
  */
 void shell_remove(char *buf)
 {
@@ -20,9 +18,10 @@ void shell_remove(char *buf)
 }
 
 /**
- * shell_errAtoi - converts a string to an int
- * @s: the string
- * Return: 0 if no numbers in string
+ * shell_errAtoi - Converts a string to an integer.
+ * @s: The input string.
+ * Return: The converted integer value,
+ * or -1 if the conversion fails.
  */
 int shell_errAtoi(char *s)
 {
@@ -48,10 +47,10 @@ int shell_errAtoi(char *s)
 }
 
 /**
- * shellPrint_error - prints an
- * @info: t
- * @estr: string containing
- * Return: 0 if no numbers in string
+ * shellPrint_error - Prints an error message
+ * to stderr in the specified format.
+ * @info: The program information.
+ * @estr: The error string.
  */
 void shellPrint_error(p_info *info, char *estr)
 {
@@ -65,10 +64,12 @@ void shellPrint_error(p_info *info, char *estr)
 }
 
 /**
- * shellPrint_decimal - function prints a decimal
- * @input: the input
- * @fd: the filedescriptor
- * Return: number of characters printed
+ * shellPrint_decimal - Prints an integer to the
+ * specified file descriptor.
+ *
+ * @input: The integer to print.
+ * @fd: The file descriptor.
+ * Return: The number of characters printed.
  */
 int shellPrint_decimal(int input, int fd)
 {
@@ -103,12 +104,13 @@ int shellPrint_decimal(int input, int fd)
 }
 
 /**
- * convertNumber - converter function, a clone of itoa
- * @num: my number
- * @base: my  base
- * @flags: flags
+ * convertNumber - Converts a number to a string
+ * representation in the specified base.
  *
- * Return: string
+ * @num: The number to convert.
+ * @base: The base for the conversion.
+ * @flags: Additional conversion flags.
+ * Return: A pointer to the string representation of the number.
  */
 char *convertNumber(long int num, int base, int flags)
 {
@@ -137,5 +139,3 @@ char *convertNumber(long int num, int base, int flags)
 		*--p = sign;
 	return (p);
 }
-
-

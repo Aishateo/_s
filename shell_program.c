@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * main - entry point
- * @ac: arg count
- * @av: arg vector
+ * main - Entry point of the shell program.
  *
- * Return: 0 on success, 1 on error
+ * @ac: The number of command-line arguments.
+ * @av: An array of command-line argument strings.
+ * Return: The exit status of the program.
  */
 int main(int ac, char **av)
 {
