@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * shell__memset - Fills a block of memory
+ * shell_memorySet - Fills a block of memory
  * with a specified value.
  *
  * @s: Pointer to the memory block to fill.
@@ -11,7 +11,7 @@
  * Return: Pointer to the memory block
  * after setting the values.
  */
-char *shell__memset(char *s, char b, unsigned int n)
+char *shell_memorySet(char *s, char b, unsigned int n)
 {
 	unsigned int i;
 

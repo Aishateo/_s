@@ -76,7 +76,7 @@ char **splits_strToWrd(char *, char *);
 char **splits_str(char *, char);
 
 /* my_functions.c */
-char *shell__memset(char *, char, unsigned int);
+char *shell_memorySet(char *, char, unsigned int);
 void s_free(char **);
 void *shell_realloc(void *, unsigned int, unsigned int);
 

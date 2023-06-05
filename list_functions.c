@@ -19,7 +19,7 @@ listS *shellAddNodeEnd(listS **head, const char *str, int num)
 	new_nde = malloc(sizeof(listS));
 	if (!new_nde)
 		return (NULL);
-	shell__memset((void *)new_nde, 0, sizeof(listS));
+	shell_memorySet((void *)new_nde, 0, sizeof(listS));
 	new_nde->num = num;
 	if (str)
 	{
@@ -141,7 +141,7 @@ listS *hellAddNode(listS **head, const char *str, int num)
 	new_hd = malloc(sizeof(listS));
 	if (!new_hd)
 		return (NULL);
-	shell__memset((void *)new_hd, 0, sizeof(listS));
+	shell_memorySet((void *)new_hd, 0, sizeof(listS));
 	new_hd->num = num;
 	if (str)
 	{
